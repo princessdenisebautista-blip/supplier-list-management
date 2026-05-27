@@ -270,7 +270,37 @@ table{
 }
 }
 
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
 
+.profile-btn{
+    background:#3498db;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.profile-btn:hover{
+    background:#2980b9;
+}
+
+.logout-btn{
+    background:#e74c3c;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.logout-btn:hover{
+    background:#c0392b;
+}
 
 </style>
 
@@ -281,12 +311,22 @@ table{
         SupplierLink
     </div>
 
+     <div class="nav-right">
+
+        <a href="{{ route('profile') }}"
+           class="profile-btn">
+
+           Profile
+        </a>
+
     <a href="{{ route('logout') }}"
        class="logout-btn">
 
        Logout
 
     </a>
+
+     </div>
 
 </div>
 

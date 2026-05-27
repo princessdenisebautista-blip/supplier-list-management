@@ -190,5 +190,35 @@ public function statistics()
     );
 }
 
+// PROFILE  
+public function profile()
+{
+    return view('user.profile');
+}
+
+public function updateProfile(Request $request)
+{
+    $user = Auth::user();
+
+    $user->name = $request->name;
+    $user->email = $request->email;
+
+    if($request->hasFile('profile_picture')){
+
+        $image = $request->file('profile_picture')
+        ->store('profiles','public');
+
+        $user->profile_picture = $image;
+    }
+
+    $user->save();
+
+    return back()
+    ->with(
+        'success',
+        'Profile updated successfully'
+    );
+}
+
 
 }

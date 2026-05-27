@@ -74,6 +74,15 @@ Route::get('/users', function () {
         [SupplierController::class,'destroy']
     )->name('supplier.delete');
 
+    // PROFILE
+   Route::get('/profile',
+        [AuthController::class,'profile']
+    )->name('profile');
+
+    Route::post('/profile/update',
+        [AuthController::class,'updateProfile']
+    )->name('profile.update');
+
     // STATISTICS
     Route::get('/statistical-dashboard',
         [AuthController::class,'statistics']

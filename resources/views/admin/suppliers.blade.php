@@ -121,9 +121,6 @@ tr{
     transition: 0.2s ease;
 }
 
-/* CELLS */
-
-
 /* ROUND EDGES */
 tr td:first-child{
     border-top-left-radius:10px;
@@ -141,7 +138,6 @@ tr:hover{
     background: rgba(255,255,255,0.1);
 }
 
-/* ACTION BUTTONS - SAME AS USER CRUD */
 
 .btn-edit{
     background:linear-gradient(135deg,#3b82f6,#2563eb);
@@ -190,7 +186,6 @@ tr:hover{
 }
 
 /* MODAL OVERLAY */
-/* MODAL BACKDROP */
 .modal{
     position:fixed;
     top:0;
@@ -207,7 +202,7 @@ tr:hover{
 
     z-index:999999;
 
-    overflow:hidden; /* prevents parent/table scrolling */
+    overflow:hidden;
 }
 
 /* show modal */
@@ -376,8 +371,8 @@ tr:hover{
     padding: 12px;
     position: fixed;
     z-index: 3000;
-    top: 20px;      /* 👈 move to top */
-    right: 20px;    /* 👈 keep right */
+    top: 20px;     
+    right: 20px;    
 
     font-size: 14px;
 }
@@ -408,7 +403,7 @@ tr:hover{
 
 .status-badge {
     padding: 6px 12px;
-    border-radius: 20px; /* makes it oblong/pill */
+    border-radius: 20px; 
     font-size: 12px;
     font-weight: 600;
     color: white;
@@ -446,7 +441,6 @@ tr:hover{
 }
 
 /* PAGINATION */
-/* PAGINATION */
 .pagination-box{
     margin-top:25px;
     display:flex;
@@ -458,7 +452,7 @@ tr:hover{
 }
 
 .pagination-box nav > div:first-child{
-    display:none; /* hides "Showing 1 to 5..." */
+    display:none;
 }
 
 .pagination-box nav > div:last-child{
@@ -515,7 +509,6 @@ tr:hover{
     height:16px;
 }
 
-/* FORCE DARK GLASS TABLE */
 .table-box table {
     background: transparent !important;
 }
@@ -762,9 +755,6 @@ Edit
 
             <label>Email</label>
             <input type="email" name="email" id="edit_email">
-
-            <label>Address</label>
-            <input type="text" name="address" id="edit_address">
 
             <label>Payment Terms</label>
             <input type="text" name="payment_terms" id="edit_payment_terms">

@@ -297,8 +297,8 @@ tr:hover {
     padding: 12px;
     position: fixed;
     z-index: 3000;
-    top: 20px;      /* 👈 move to top */
-    right: 20px;    /* 👈 keep right */
+    top: 20px;   
+    right: 20px;    
 
     font-size: 14px;
 }

@@ -10,7 +10,7 @@ html, body {
     overflow: hidden;
 }
 
-/* softer background glow (less blur = sharper UI) */
+
 body::before {
     content: "";
     position: absolute;
@@ -19,7 +19,7 @@ body::before {
     background: radial-gradient(circle, rgba(59,130,246,0.25), transparent 70%);
     top: -120px;
     left: -120px;
-    filter: blur(30px); /* reduced from 60px */
+    filter: blur(30px);
 }
 
 body::after {
@@ -30,7 +30,7 @@ body::after {
     background: radial-gradient(circle, rgba(16,185,129,0.2), transparent 70%);
     bottom: -120px;
     right: -120px;
-    filter: blur(30px); /* reduced from 60px */
+    filter: blur(30px); 
 }
 
 /* CENTER WRAPPER */
@@ -48,8 +48,8 @@ body::after {
     width: 380px;
     border-radius: 18px;
 
-    background: rgba(255,255,255,0.12); /* slightly stronger for clarity */
-    backdrop-filter: blur(10px); /* reduced blur */
+    background: rgba(255,255,255,0.12); 
+    backdrop-filter: blur(10px); 
     
     border: 1px solid rgba(255,255,255,0.25);
 
@@ -60,7 +60,7 @@ body::after {
     transition: 0.3s ease;
 }
 
-/* subtle hover (no tilt anymore) */
+
 .card:hover {
     transform: scale(1.02);
 }

@@ -1,6 +1,6 @@
 
 <style>
-/* BACKGROUND (same as login) */
+
 html, body {
     height: 100%;
     margin: 0;
@@ -9,7 +9,7 @@ html, body {
     overflow: hidden;
 }
 
-/* SOFT GLOW */
+
 body::before {
     content: "";
     position: absolute;
@@ -18,7 +18,7 @@ body::before {
     background: radial-gradient(circle, rgba(59,130,246,0.25), transparent 70%);
     top: -120px;
     left: -120px;
-    filter: blur(30px); /* reduced from 60px */
+    filter: blur(30px); 
 }
 
 body::after {
@@ -72,7 +72,7 @@ body::after {
     width: 400px;
     border-radius: 18px !important;
 
-    background: rgba(30, 41, 59, 0.95) !important; /* DARK like login */
+    background: rgba(30, 41, 59, 0.95) !important; 
     backdrop-filter: blur(10px);
 
     border: 1px solid rgba(255,255,255,0.15) !important;
@@ -108,7 +108,7 @@ body::after {
 /* INPUT */
 
 .form-control {
-    background: #4b5563 !important; /* GREY (same feel as login) */
+    background: #4b5563 !important; 
     color: white !important;
     border: none !important;
     border-radius: 10px;
@@ -138,7 +138,7 @@ label {
     color: rgba(155, 228, 255, 0.85);
 }
 
-/* BUTTON (same feel as login) */
+/* BUTTON */
 .btn-primary {
     width: 100%;
     padding: 12px;

@@ -134,7 +134,7 @@
 .chart-box table {
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 10px; /* space between rows */
+    border-spacing: 0 10px;
 }
 
 .chart-box th {
@@ -155,7 +155,7 @@
     border: none;
 }
 
-/* each row becomes a "mini card" */
+
 .chart-box tr {
     background: rgba(255,255,255,0.06);
     backdrop-filter: blur(8px);
@@ -168,7 +168,7 @@
     transition: 0.2s ease;
 }
 
-/* round corners for row */
+
 .chart-box tr td:first-child {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;

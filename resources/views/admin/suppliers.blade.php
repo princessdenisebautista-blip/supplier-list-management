@@ -691,9 +691,6 @@ Edit
             <label>Email</label>
             <input type="email" name="email">
 
-            <label>Address</label>
-            <input type="text" name="address">
-
             <label>Payment Terms</label>
             <input type="text" name="payment_terms">
 

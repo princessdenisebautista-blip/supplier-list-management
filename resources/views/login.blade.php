@@ -153,6 +153,14 @@ a:hover {
 
         <div class="card-body">
 
+        @if(session('success'))
+<div class="toast-container">
+    <div class="toast toast-success" id="successToast">
+        {{ session('success') }}
+    </div>
+</div>
+@endif
+
             <form method="POST" action="{{ route('login') }}">
                 @csrf 
 
@@ -177,5 +185,20 @@ a:hover {
     </div>
 
 </div>
+
+<script>
+const toast = document.getElementById('successToast');
+
+if(toast){
+    setTimeout(() => {
+        toast.style.opacity = '0';
+
+        setTimeout(() => {
+            toast.remove();
+        }, 500);
+
+    }, 3000);
+}
+</script>
 
 @endsection

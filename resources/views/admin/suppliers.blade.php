@@ -820,7 +820,7 @@ Edit
             <input type="text" name="primary_contact" id="edit_primary_contact" required>
 
             <label>Phone</label>
-            <input type="text" name="phone" edit="edit_phone" maxlength="11" pattern="[0-9]{11}"
+            <input type="text" name="phone" id="edit_phone" maxlength="11" pattern="[0-9]{11}"
             oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,11)" required>
 
             <label>Email</label>
@@ -945,7 +945,7 @@ document.getElementById("edit_payment_method").value =
 btn.getAttribute("data-payment-method") || "";
 
     document.getElementById("edit_status").value =
-        btn.dataset.status || "";
+       btn.getAttribute("data-status") || "";
 
     document.getElementById("edit_contract_start").value =
 btn.getAttribute("data-contract-start") || "";

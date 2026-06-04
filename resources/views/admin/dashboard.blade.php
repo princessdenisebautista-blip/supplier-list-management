@@ -411,7 +411,7 @@ tr:hover {
         @csrf
         @method('DELETE')
 
-        <button type="submit">Yes, Delete</button>
+        <button type="submit">Delete</button>
         <button type="button" onclick="closeDeleteModal()">Cancel</button>
     </form>
   </div>

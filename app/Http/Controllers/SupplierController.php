@@ -35,6 +35,33 @@ public function index(Request $request)
 
    public function store(Request $request)
 {
+
+    $request->validate([
+
+        'name' => 'required',
+        'category' => 'required',
+        'product_service' => 'required',
+
+        'rating' => 'required|integer|min:1|max:5',
+
+        'primary_contact' => 'required',
+
+        'phone' => 'required|digits:11',
+
+        'email' => 'required|email',
+
+        'payment_terms' => 'required',
+
+        'payment_method' => 'required',
+
+        'status' => 'required',
+
+        'contract_start' => 'required|date',
+
+        'contract_end' => 'required|date|after_or_equal:contract_start',
+
+    ]);
+    
     Supplier::create([
 
         'name' => ucwords(strtolower($request->name)),

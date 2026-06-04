@@ -745,29 +745,29 @@ Edit
             <input type="text" name="name" required>
 
             <label>Category</label>
-            <input type="text" name="category">
+            <input type="text" name="category" required>
 
             <label>Product / Service</label>
-            <input type="text" name="product_service">
+            <input type="text" name="product_service" required>
 
             <label>Rating</label>
-            <input type="number" min="1" max="5" name="rating">
+            <input type="number" min="1" max="5" name="rating" required>
 
             <label>Primary Contact</label>
-            <input type="text" name="primary_contact">
+            <input type="text" name="primary_contact" required>
 
             <label>Phone</label>
             <input type="text" name="phone" maxlength="11" pattern="[0-9]{11}" 
-            oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,11)">
+            oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,11)" required>
 
             <label>Email</label>
-            <input type="email" name="email">
+            <input type="email" name="email" required>
 
             <label>Payment Terms</label>
-            <input type="text" name="payment_terms">
+            <input type="text" name="payment_terms" required>
 
             <label>Payment Method</label>
-            <input type="text" name="payment_method">
+            <input type="text" name="payment_method" required>
 
             <label>Status</label>
             <select name="status">
@@ -776,10 +776,10 @@ Edit
             </select>
 
             <label>Contract Start</label>
-            <input type="date" name="contract_start">
+            <input type="date" name="contract_start" required>
 
             <label>Contract End</label>
-            <input type="date" name="contract_end">
+            <input type="date" name="contract_end" required>
 
             <div class="button-group">
                 <button type="submit">Save</button>
@@ -805,44 +805,44 @@ Edit
             <input type="hidden" name="id" id="edit_id">
 
             <label>Name</label>
-            <input type="text" name="name" id="edit_name">
+            <input type="text" name="name" id="edit_name" required>
 
             <label>Category</label>
-            <input type="text" name="category" id="edit_category">
+            <input type="text" name="category" id="edit_category" required>
 
             <label>Product / Service</label>
-            <input type="text" name="product_service" id="edit_product_service">
+            <input type="text" name="product_service" id="edit_product_service" required>
 
             <label>Rating</label>
-            <input type="number" name="rating" id="edit_rating" maxlength="1">
+            <input type="number" name="rating" id="edit_rating" min="1" max="5" required>
 
             <label>Primary Contact</label>
-            <input type="text" name="primary_contact" id="edit_primary_contact">
+            <input type="text" name="primary_contact" id="edit_primary_contact" required>
 
             <label>Phone</label>
-            <input type="text" name="phone" maxlength="11" pattern="[0-9]{11}"
-            oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,11)">
+            <input type="text" name="phone" edit="edit_phone" maxlength="11" pattern="[0-9]{11}"
+            oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,11)" required>
 
             <label>Email</label>
-            <input type="email" name="email" id="edit_email">
+            <input type="email" name="email" id="edit_email" required>
 
             <label>Payment Terms</label>
-            <input type="text" name="payment_terms" id="edit_payment_terms">
+            <input type="text" name="payment_terms" id="edit_payment_terms" required>
 
             <label>Payment Method</label>
-            <input type="text" name="payment_method" id="edit_payment_method">
+            <input type="text" name="payment_method" id="edit_payment_method" required>
 
             <label>Status</label>
-            <select name="status" id="edit_status">
+            <select name="status" id="edit_status" required>
                 <option value="active">Active</option>
                 <option value="inactive">Inactive</option>
             </select>
 
             <label>Contract Start</label>
-            <input type="date" name="contract_start" id="edit_contract_start">
+            <input type="date" name="contract_start" id="edit_contract_start" required>
 
             <label>Contract End</label>
-            <input type="date" name="contract_end" id="edit_contract_end">
+            <input type="date" name="contract_end" id="edit_contract_end" required>
 
             <div class="button-group">
                 <button type="submit">Update</button>
@@ -933,28 +933,25 @@ function openEditModal(btn){
         btn.dataset.primaryContact || "";
 
     document.getElementById("edit_phone").value =
-        btn.dataset.phone || "";
+        btn.getAttribute("data-phone")
 
     document.getElementById("edit_email").value =
-        btn.dataset.email || "";
-
-    document.getElementById("edit_address").value =
-        btn.dataset.address || "";
+        btn.getAttribute("data-email")
 
     document.getElementById("edit_payment_terms").value =
-        btn.dataset.paymentTerms || "";
+btn.getAttribute("data-payment-terms") || "";
 
-    document.getElementById("edit_payment_method").value =
-        btn.dataset.paymentMethod || "";
+document.getElementById("edit_payment_method").value =
+btn.getAttribute("data-payment-method") || "";
 
     document.getElementById("edit_status").value =
         btn.dataset.status || "";
 
     document.getElementById("edit_contract_start").value =
-        btn.dataset.contractStart || "";
+btn.getAttribute("data-contract-start") || "";
 
-    document.getElementById("edit_contract_end").value =
-        btn.dataset.contractEnd || "";
+document.getElementById("edit_contract_end").value =
+btn.getAttribute("data-contract-end") || "";
 }
 
 function closeEditModal(){
@@ -988,26 +985,6 @@ function closeDeleteModal(){
     document.body.style.overflow = "auto";
 }
 
-
-// =========================
-// SEARCH
-// =========================
-let searchTimer;
-
-document.getElementById('searchInput').addEventListener('keyup', function(){
-
-    clearTimeout(searchTimer);
-
-    let keyword = this.value;
-
-    searchTimer = setTimeout(function(){
-
-        window.location.href =
-            '/suppliers?search=' + encodeURIComponent(keyword);
-
-    }, 500); // waits 500ms after user stops typing
-
-});
 
 
 
@@ -1049,6 +1026,15 @@ showToast(@json(session('success')), "success");
 @if(session('error'))
 <script>
 showToast(@json(session('error')), "error");
+</script>
+@endif
+
+@if ($errors->any())
+<script>
+showToast(
+    "{{ $errors->first() }}",
+    "error"
+);
 </script>
 @endif
 

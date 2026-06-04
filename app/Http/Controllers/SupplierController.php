@@ -17,7 +17,7 @@ public function index(Request $request)
 
     $suppliers = $suppliers->paginate(5);
 
-    return view('supplier.index', compact('suppliers'));
+    return view('admin.index', compact('suppliers'));
 }
    public function store(Request $request)
 {

@@ -7,17 +7,17 @@ use Illuminate\Http\Request;
 
 class SupplierController extends Controller
 {
-public function index(Request $request)
+ public function index(Request $request)
 {
     $suppliers = Supplier::query();
 
-    if($request->search){
+    if ($request->search) {
         $suppliers->where('name', 'like', '%'.$request->search.'%');
     }
 
     $suppliers = $suppliers->paginate(5);
 
-    return view('admin.index', compact('suppliers'));
+    return view('admin.supplier', compact('suppliers'));
 }
    public function store(Request $request)
 {

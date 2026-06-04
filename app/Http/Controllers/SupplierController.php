@@ -17,7 +17,7 @@ class SupplierController extends Controller
 
     $suppliers = $suppliers->paginate(5);
 
-    return view('admin.supplier', compact('suppliers'));
+    return view('admin.suppliers', compact('suppliers'));
 }
    public function store(Request $request)
 {

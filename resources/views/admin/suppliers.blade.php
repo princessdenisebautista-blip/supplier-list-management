@@ -558,10 +558,17 @@ tr:hover{
 
         <div class="header-actions">
 
-            <input type="text"
-                   id="searchInput"
-                   placeholder="Search supplier..."
-                   onkeyup="searchSupplier()">
+            <form method="GET">
+    <input
+        type="text"
+        name="search"
+        value="{{ request('search') }}"
+        placeholder="Search supplier...">
+
+    <button type="submit">
+        Search
+    </button>
+</form>
 
             <button class="add-btn" onclick="openAddModal()">
                 ➕ Add Supplier

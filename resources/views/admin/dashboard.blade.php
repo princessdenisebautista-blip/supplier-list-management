@@ -331,7 +331,7 @@ tr:hover {
 
 <div class="table-box">
 <div class="header-bar">
-    <h1>Users CRUD (Admin)</h1>
+    <h1>Users CRUD</h1>
     <button class="add-btn" onclick="openAddModal()">➕ Add User</button>
 </div>
 

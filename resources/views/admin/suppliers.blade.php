@@ -866,7 +866,7 @@ Edit
             @method('DELETE')
 
             <div class="button-group">
-                <button type="submit">Yes Delete</button>
+                <button type="submit">Delete</button>
                 <button type="button" onclick="closeDeleteModal()">Cancel</button>
             </div>
 

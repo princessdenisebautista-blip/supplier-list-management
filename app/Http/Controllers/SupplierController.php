@@ -7,18 +7,32 @@ use Illuminate\Http\Request;
 
 class SupplierController extends Controller
 {
- public function index(Request $request)
+
+public function index(Request $request)
 {
     $suppliers = Supplier::query();
 
-    if ($request->search) {
-        $suppliers->where('name', 'like', '%'.$request->search.'%');
-    }
+   if ($request->search) {
 
+    $search = $request->search;
+
+    $suppliers->where(function ($query) use ($search) {
+
+        $query->where('name', 'like', "%{$search}%")
+              ->orWhere('category', 'like', "%{$search}%")
+              ->orWhere('product_service', 'like', "%{$search}%")
+              ->orWhere('payment_method', 'like', "%{$search}%")
+              ->orWhere('payment_terms', 'like', "%{$search}%")
+              ->orWhere('primary_contact', 'like', "%{$search}%")
+              ->orWhere('email', 'like', "%{$search}%")
+              ->orWhere('status', 'like', "%{$search}%");
+    });
+}
     $suppliers = $suppliers->paginate(5);
 
     return view('admin.suppliers', compact('suppliers'));
 }
+
    public function store(Request $request)
 {
     Supplier::create([

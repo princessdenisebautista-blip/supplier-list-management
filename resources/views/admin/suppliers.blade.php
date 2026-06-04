@@ -333,6 +333,8 @@ tr:hover{
     transform:translateY(-2px);
 }
 
+
+
 /* SCROLLBAR */
 .modal-content::-webkit-scrollbar{
     width:8px;
@@ -547,6 +549,58 @@ tr:hover{
 .table-box tr:hover {
     transform: translateY(-3px);
 }
+
+.search-form{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.search-form input{
+    width:260px;
+    padding:10px 15px;
+
+    border:none;
+    border-radius:10px;
+
+    background:rgba(255,255,255,0.08);
+    color:white;
+
+    outline:none;
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:
+        inset 0 2px 8px rgba(0,0,0,.35);
+}
+
+.search-form input::placeholder{
+    color:rgba(255,255,255,.5);
+}
+
+.search-btn{
+    background:linear-gradient(135deg,#3b82f6,#2563eb);
+    color:white;
+
+    border:none;
+    border-radius:10px;
+
+    padding:10px 16px;
+    cursor:pointer;
+}
+
+.search-btn:hover{
+    transform:translateY(-2px);
+}
+
+.clear-btn{
+    background:linear-gradient(135deg,#ef4444,#dc2626);
+    color:white;
+
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:10px;
+}
 </style>
 
 <div class="table-box">
@@ -558,16 +612,26 @@ tr:hover{
 
         <div class="header-actions">
 
-            <form method="GET">
+        <!-- SEARCH-->
+
+            <form method="GET" action="/suppliers" class="search-form">
+
     <input
         type="text"
         name="search"
         value="{{ request('search') }}"
-        placeholder="Search supplier...">
+        placeholder="Search supplier, product, payment...">
 
-    <button type="submit">
+    <button type="submit" class="search-btn">
         Search
     </button>
+
+    @if(request('search'))
+        <a href="/suppliers" class="clear-btn">
+            Clear
+        </a>
+    @endif
+
 </form>
 
             <button class="add-btn" onclick="openAddModal()">
@@ -693,7 +757,8 @@ Edit
             <input type="text" name="primary_contact">
 
             <label>Phone</label>
-            <input type="text" name="phone" maxlength="11">
+            <input type="text" name="phone" maxlength="11" pattern="[0-9]{11}" 
+            oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,11)">
 
             <label>Email</label>
             <input type="email" name="email">
@@ -749,13 +814,14 @@ Edit
             <input type="text" name="product_service" id="edit_product_service">
 
             <label>Rating</label>
-            <input type="number" name="rating" id="edit_rating">
+            <input type="number" name="rating" id="edit_rating" maxlength="1">
 
             <label>Primary Contact</label>
             <input type="text" name="primary_contact" id="edit_primary_contact">
 
             <label>Phone</label>
-            <input type="text" name="phone" id="edit_phone">
+            <input type="text" name="phone" maxlength="11" pattern="[0-9]{11}"
+            oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,11)">
 
             <label>Email</label>
             <input type="email" name="email" id="edit_email">
@@ -926,29 +992,23 @@ function closeDeleteModal(){
 // =========================
 // SEARCH
 // =========================
-function searchSupplier(){
+let searchTimer;
 
-    let input =
-        document.getElementById("searchInput")
-        .value.toLowerCase();
+document.getElementById('searchInput').addEventListener('keyup', function(){
 
-    let rows =
-        document.querySelectorAll("table tr");
+    clearTimeout(searchTimer);
 
-    rows.forEach((row,index)=>{
+    let keyword = this.value;
 
-        if(index===0) return;
+    searchTimer = setTimeout(function(){
 
-        let text =
-            row.innerText.toLowerCase();
+        window.location.href =
+            '/suppliers?search=' + encodeURIComponent(keyword);
 
-        row.style.display =
-            text.includes(input)
-            ? ""
-            : "none";
+    }, 500); // waits 500ms after user stops typing
 
-    });
-}
+});
+
 
 
 // =========================
@@ -975,7 +1035,7 @@ function showToast(message,type){
 
         toast.className = "";
 
-    },3000);
+    },2000);
 }
 
 </script>
